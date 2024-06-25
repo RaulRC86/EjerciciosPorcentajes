@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Porcentajes</title>
+</head>
+<body>
+    <h1>¡Bienvenidos a los ejercicios de porcentajes!</h1>
+    <div>
+        <p id="exercise"></p>
+        <input type="number" id="respuesta" placeholder="Ingresa tu respuesta">
+        <button onclick="verificarRespuesta()">Verificar</button>
+    </div>
+    <p id="feedback"></p>
+    <p id="procedimiento"></p>
+    <button onclick="generarEjercicio()">Nuevo Ejercicio</button>
+
+    <script>
+        let porcentaje;
+        let numero;
+        let resultadoCorrecto;
+
+        function generarEjercicio() {
+            porcentaje = Math.floor(Math.random() * 100) + 1;
+            numero = Math.floor(Math.random() * 1000) + 1;
+            resultadoCorrecto = Math.round((porcentaje / 100) * numero * 100) / 100;
+            document.getElementById("exercise").innerText = `¿Cuál es el ${porcentaje}% de ${numero}?`;
+            document.getElementById("feedback").innerText = '';
+            document.getElementById("procedimiento").innerText = '';
+            document.getElementById("respuesta").value = '';
+        }
+
+        function verificarRespuesta() {
+            const respuesta = parseFloat(document.getElementById("respuesta").value);
+            if (isNaN(respuesta)) {
+                document.getElementById("feedback").innerText = "Por favor, ingresa un número válido.";
+                return;
+            }
+
+            if (Math.abs(respuesta - resultadoCorrecto) < 0.01) {
+                document.getElementById("feedback").innerText = "¡Correcto!";
+            } else {
+                document.getElementById("feedback").innerText = `Incorrecto. La respuesta correcta es: ${resultadoCorrecto.toFixed(2)}`;
+            }
+
+            mostrarProcedimiento();
+        }
+
+        function mostrarProcedimiento() {
+            const resultadoMultiplicacion = Math.round(numero * porcentaje * 100) / 100;
+            const procedimiento = `
+                <b>Procedimiento para resolver el ejercicio:</b><br>
+                1. Calcula el ${porcentaje}% de ${numero}.<br>
+                &nbsp;&nbsp;a. Multiplicamos el número por el porcentaje: ${numero} * ${porcentaje} = ${resultadoMultiplicacion}.<br>
+                &nbsp;&nbsp;b. Dividimos el resultado por 100: ${resultadoMultiplicacion} / 100 = ${resultadoCorrecto.toFixed(2)}.<br>
+                2. Por lo tanto, ${porcentaje}% de ${numero} es ${resultadoCorrecto.toFixed(2)}.
+            `;
+            document.getElementById("procedimiento").innerHTML = procedimiento;
+        }
+
+        // Generar el primer ejercicio al cargar la página
+        window.onload = generarEjercicio;
+    </script>
+</body>
+</html>
