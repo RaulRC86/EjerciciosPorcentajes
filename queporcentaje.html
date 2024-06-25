@@ -37,7 +37,7 @@
         </div>
     </div>
 </nav> 
-    <h1>¡Bienvenidos a los ejercicios de porcentajes!</h1>
+<h1>¿Qué porcentaje es un número de otro número?</h1>
     <div>
         <p id="exercise"></p>
         <input type="number" id="respuesta" placeholder="Ingresa tu respuesta">
@@ -48,15 +48,15 @@
     <button onclick="generarEjercicio()">Nuevo Ejercicio</button>
 
     <script>
-        let porcentaje;
-        let numero;
-        let resultadoCorrecto;
+        let numero1;
+        let numero2;
+        let porcentajeCorrecto;
 
         function generarEjercicio() {
-            porcentaje = Math.floor(Math.random() * 100) + 1;
-            numero = Math.floor(Math.random() * 1000) + 1;
-            resultadoCorrecto = Math.round((porcentaje / 100) * numero * 100) / 100;
-            document.getElementById("exercise").innerText = `¿Cuál es el ${porcentaje}% de ${numero}?`;
+            numero1 = Math.floor(Math.random() * 100) + 1;
+            numero2 = Math.floor(Math.random() * 100) + 1;
+            porcentajeCorrecto = Math.round((numero1 / numero2) * 100 * 100) / 100;
+            document.getElementById("exercise").innerText = `¿Qué porcentaje es ${numero1} de ${numero2}?`;
             document.getElementById("feedback").innerText = '';
             document.getElementById("procedimiento").innerText = '';
             document.getElementById("respuesta").value = '';
@@ -69,23 +69,23 @@
                 return;
             }
 
-            if (Math.abs(respuesta - resultadoCorrecto) < 0.01) {
+            if (Math.abs(respuesta - porcentajeCorrecto) < 0.01) {
                 document.getElementById("feedback").innerText = "¡Correcto!";
             } else {
-                document.getElementById("feedback").innerText = `Incorrecto. La respuesta correcta es: ${resultadoCorrecto.toFixed(2)}`;
+                document.getElementById("feedback").innerText = `Incorrecto. La respuesta correcta es: ${porcentajeCorrecto.toFixed(2)}%`;
             }
 
             mostrarProcedimiento();
         }
 
         function mostrarProcedimiento() {
-            const resultadoMultiplicacion = Math.round(numero * porcentaje * 100) / 100;
+            const resultadoDivision = Math.round((numero1 / numero2) * 100 * 100) / 100;
             const procedimiento = `
                 <b>Procedimiento para resolver el ejercicio:</b><br>
-                1. Calcula el ${porcentaje}% de ${numero}.<br>
-                &nbsp;&nbsp;a. Multiplicamos el número por el porcentaje: ${numero} * ${porcentaje} = ${resultadoMultiplicacion}.<br>
-                &nbsp;&nbsp;b. Dividimos el resultado por 100: ${resultadoMultiplicacion} / 100 = ${resultadoCorrecto.toFixed(2)}.<br>
-                2. Por lo tanto, ${porcentaje}% de ${numero} es ${resultadoCorrecto.toFixed(2)}.
+                1. Dividimos ${numero1} por ${numero2}.<br>
+                &nbsp;&nbsp;a. ${numero1} / ${numero2} = ${(numero1 / numero2).toFixed(4)}.<br>
+                2. Multiplicamos el resultado por 100 para obtener el porcentaje: ${(numero1 / numero2).toFixed(4)} * 100 = ${resultadoDivision.toFixed(2)}%.<br>
+                3. Por lo tanto, ${numero1} es el ${porcentajeCorrecto.toFixed(2)}% de ${numero2}.
             `;
             document.getElementById("procedimiento").innerHTML = procedimiento;
         }
