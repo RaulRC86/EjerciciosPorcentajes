@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problemas de Planteo</title>
+</head>
+<body>
+    <h1>Problemas de Planteo</h1>
+
+    <div class="problema">
+        <h2>Problema 1: Compra en la tienda</h2>
+        <p>En la tienda de Juanita, el precio de un kilogramo de manzanas es de $2.50. Si Juanita compra 3.5 kilogramos de manzanas, ¿cuánto pagará en total?</p>
+        <div>
+            <label for="respuesta1">Tu respuesta:</label>
+            <input type="text" id="respuesta1" placeholder="Ingresa tu respuesta">
+            <button onclick="verificarRespuesta(1)">Verificar</button>
+        </div>
+        <p id="feedback1"></p>
+    </div>
+
+    <div class="problema">
+        <h2>Problema 2: Viaje en bicicleta</h2>
+        <p>Juan recorre 15 kilómetros en bicicleta cada día. Si monta en bicicleta durante 5 días, ¿cuántos kilómetros habrá recorrido en total?</p>
+        <div>
+            <label for="respuesta2">Tu respuesta:</label>
+            <input type="text" id="respuesta2" placeholder="Ingresa tu respuesta">
+            <button onclick="verificarRespuesta(2)">Verificar</button>
+        </div>
+        <p id="feedback2"></p>
+    </div>
+
+    <!-- Agrega más problemas aquí -->
+
+    <script>
+        const problemas = [
+            { precioPorKg: 2.50, cantidadComprada: 3.5, totalEsperado: 8.75 },
+            { distanciaDiaria: 15, dias: 5, distanciaTotalEsperada: 75 },
+            // Agrega más problemas aquí
+        ];
+
+        function verificarRespuesta(numeroProblema) {
+            const respuestaUsuario = parseFloat(document.getElementById("respuesta" + numeroProblema).value);
+            if (isNaN(respuestaUsuario)) {
+                document.getElementById("feedback" + numeroProblema).innerText = "Por favor, ingresa un número válido.";
+                return;
+            }
+
+            const totalEsperado = problemas[numeroProblema - 1].totalEsperado;
+            if (Math.abs(respuestaUsuario - totalEsperado) < 0.01) {
+                document.getElementById("feedback" + numeroProblema).innerText = "¡Correcto!";
+            } else {
+                document.getElementById("feedback" + numeroProblema).innerText = `Incorrecto. La respuesta correcta es: $${totalEsperado.toFixed(2)}`;
+            }
+        }
+    </script>
+</body>
+</html>
+
