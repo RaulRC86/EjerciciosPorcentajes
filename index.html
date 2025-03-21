@@ -37,7 +37,10 @@
         </div>
     </div>
 </nav> 
-    <h1>¡Bienvenidos a los ejercicios de porcentajes!</h1>
+<div id="instructions" class="mb-4">
+    <h2>Instrucciones</h2>
+    <p class="fs-4">Bienvenido a los ejercicios de porcentajes. Para empezar, haz clic en "Nuevo Ejercicio". Ingresa tu respuesta y verifica para ver si es correcta. Si necesitas ayuda, revisa el procedimiento detallado que se mostrará después de verificar tu respuesta.</p>
+</div>
     <div>
         <p id="exercise"></p>
         <input type="number" id="respuesta" placeholder="Ingresa tu respuesta">
@@ -46,8 +49,24 @@
     <p id="feedback"></p>
     <p id="procedimiento"></p>
     <button onclick="generarEjercicio()">Nuevo Ejercicio</button>
+    <footer class="bg-light d-flex flex-column align-items-center fs-5 border-top border-top-5 border-bottom border-bottom-5 mt-4">
+        <p>© 2024 Creado por Raúl Rodríguez - Soluciones Informáticas.</p>
+        <div class="contenedor mb-3">   
+        <div class="icono2">
+            <a href="https://wa.me/56972033734" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    
+        <div class="icono2">
+            <a href="https://www.linkedin.com/in/ra%C3%BAl-rodr%C3%ADguez-clavero-377368132/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+           
+        <div class="icono2">
+            <a href="https://github.com/RaulRC86" target="_blank"><i class="fa-brands fa-github"></i></a>
+        </div>
+    </div>
+    </footer>
 
-    <script>
+    <script class="fs-4">
         let porcentaje;
         let numero;
         let resultadoCorrecto;
@@ -93,22 +112,7 @@
         // Generar el primer ejercicio al cargar la página
         window.onload = generarEjercicio;
     </script>
-    <footer class="bg-light d-flex flex-column align-items-center fs-5 border-top border-top-5 border-bottom border-bottom-5 mt-4">
-        <p>© 2024 Creado por Raúl Rodríguez - Soluciones Informáticas.</p>
-        <div class="contenedor mb-3">   
-        <div class="icono2">
-            <a href="https://wa.me/56972033734" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-        </div>
-    
-        <div class="icono2">
-            <a href="https://www.linkedin.com/in/ra%C3%BAl-rodr%C3%ADguez-clavero-377368132/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-        </div>
-           
-        <div class="icono2">
-            <a href="https://github.com/RaulRC86" target="_blank"><i class="fa-brands fa-github"></i></a>
-        </div>
-    </div>
-    </footer>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {         
             var path = window.location.pathname;
