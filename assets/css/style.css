@@ -1,8 +1,12 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0; }
+
 .contenedor {
     display: flex;
     justify-content: space-around; 
-    width: 100%; 
-    max-width: 800px; 
+    width: 100vw; 
 }
 
 .icono {
@@ -25,3 +29,20 @@ footer {position: fixed; bottom: 0; width: 100%;}
         justify-content: space-evenly; 
         width: 100%; 
         max-width: 800px; }
+
+@media (max-width: 768px) {
+
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0; }
+
+    footer {
+        width: 100%;
+        position: relative;
+    }
+
+#instructions p {
+    font-size: 12px;
+    text-align: center;}
+}
